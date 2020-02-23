@@ -1,0 +1,28 @@
+// int类型有益处went
+class Solution {
+public:
+    bool judgeSquareSum(int c) {
+        if(c < 0){
+            return false;
+        }
+
+
+        long long i = 0;
+        long long  j = sqrt(c);
+
+        while(i <= j){
+            long long  iSquareSum = i*i + j*j;
+            if(iSquareSum == c){
+                return true;
+            }
+            else if(iSquareSum < c){
+                i ++;
+            }
+            else{
+                j--;
+            }
+        }
+
+        return false;
+    }
+};
