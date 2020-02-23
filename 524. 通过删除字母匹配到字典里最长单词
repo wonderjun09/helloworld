@@ -1,0 +1,36 @@
+class Solution {
+private:
+    int isSubstr(string target,string s)
+    {
+        int i = 0,j =0;
+
+    while(j < s.size()&&i<target.size()){
+        if(s[j] == target[i]){
+            i++;
+        }
+        j++;
+    }
+
+
+    return i == target.size();
+}
+
+public:
+    string findLongestWord(string s, vector<string>& d) {
+        string str = "";
+        for(int i = 0; i < d.size(); i++) {
+        int tag = str.length(),leng = d[i].length();
+
+        if(tag> leng ||(tag==leng && str.compare(d[i]) < 0)){
+            continue; 
+        }
+        if(isSubstr(d[i],s)){
+            str = d[i];
+        }
+    }
+
+    return str;
+    }
+
+
+};
