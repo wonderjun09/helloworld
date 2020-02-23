@@ -1,14 +1,31 @@
-public boolean hasCycle(ListNode head) {
-    if (head == null) {
-        return false;
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+    //边界条件
+    if(head== NULL || head->next == NULL){
+    return  false;
     }
-    ListNode l1 = head, l2 = head.next;
-    while (l1 != null && l2 != null && l2.next != null) {
-        if (l1 == l2) {
-            return true;
-        }
-        l1 = l1.next;
-        l2 = l2.next.next;
+    //定义两个指针
+    ListNode *slow = head;
+    ListNode *fast = head->next;
+    //开始两个指针赛跑
+    while(slow != fast){
+    //退出循环查询条件
+    if(fast== NULL || fast->next == NULL){
+       return false;
     }
-    return false;
+    //如果不为空则依次迭代fast2步，slow1步
+    slow =  slow->next;
+    fast = fast->next->next;
 }
+return  true;
+}    
+};
